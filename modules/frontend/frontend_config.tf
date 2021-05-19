@@ -26,7 +26,7 @@ resource "kubernetes_manifest" "frontend_config" {
     }
 
     spec = {
-      sslPolicy = coalescelist(google_compute_ssl_policy.this.*.name, [var.ssl_policy.name], "")[0]
+      sslPolicy = coalescelist(google_compute_ssl_policy.this.*.name, [var.ssl_policy.name], [""])[0]
 
       redirectToHttps = {
         enabled          = var.ssl_redirect.enabled

@@ -24,7 +24,7 @@ resource "kubernetes_ingress" "ingress" {
           "ingress.gcp.kubernetes.io/pre-shared-cert" = length(var.pre_shared_certificates) > 0 ? join(",", var.pre_shared_certificates) : null
           "networking.gke.io/managed-certificates"    = length(var.managed_certificates) > 0 ? join(",", keys(var.managed_certificates)) : null
 
-          "networking.gke.io/v1beta1.FrontendConfig" = var.external && var.frontend_config != null ? coalescelist(kubernetes_manifest.frontend_config.*.metadata.name, [var.frontend_config.name])[0] : null
+          "networking.gke.io/v1beta1.FrontendConfig" = var.external && var.frontend_config != null ? coalescelist(kubernetes_manifest.frontend_config.*.manifest.metadata.name, [var.frontend_config.name])[0] : null
         } : k => v if v != null && v != ""
       },
       var.ingress_annotations,

@@ -154,6 +154,7 @@ variable "ssl_redirect" {
     response_code_name = optional(string) # One of `MOVED_PERMANENTLY_DEFAULT` `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`
   })
   default = {
-    enabled = true
+    enabled            = true
+    response_code_name = "MOVED_PERMANENTLY_DEFAULT"
   }
 }
