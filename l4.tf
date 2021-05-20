@@ -14,7 +14,7 @@ resource "google_compute_address" "l4" {
 }
 
 data "google_compute_address" "l4" {
-  count = !var.enable_l7_load_balancing ? 1 : 0
+  count      = !var.enable_l7_load_balancing ? 1 : 0
   depends_on = [google_compute_address.l4]
 
   name = var.static_ip.name
