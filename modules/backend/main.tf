@@ -18,11 +18,11 @@ resource "kubernetes_manifest" "backend_config" {
       cdn = {
         enabled = var.cdn.enabled
         cachePolicy = { for k, v in {
-          includeHost          = var.cdn.policy.include_host
-          includeProtocol      = var.cdn.policy.include_protocol
-          includeQueryString   = var.cdn.policy.include_query_string
-          queryStringBlacklist = var.cdn.policy.query_string_blacklist
-          queryStringWhitelist = var.cdn.policy.query_string_whitelist
+          includeHost          = var.cdn.policy != null ? var.cdn.policy.include_host : null
+          includeProtocol      = var.cdn.policy != null ? var.cdn.policy.include_protocol : null
+          includeQueryString   = var.cdn.policy != null ? var.cdn.policy.include_query_string : null
+          queryStringBlacklist = var.cdn.policy != null ? var.cdn.policy.query_string_blacklist : null
+          queryStringWhitelist = var.cdn.policy != null ? var.cdn.policy.query_string_whitelist : null
           } : k => v if v != null
         }
       }
