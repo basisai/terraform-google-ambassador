@@ -3,7 +3,7 @@ resource "kubernetes_ingress" "ingress" {
     kubernetes_manifest.managed_certificates,
   ]
 
-  wait_for_load_balancer = true
+  wait_for_load_balancer = var.wait_for_load_balancer
 
   metadata {
     name      = var.ingress_name

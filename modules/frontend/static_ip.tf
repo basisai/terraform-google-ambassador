@@ -23,3 +23,22 @@ resource "google_compute_global_address" "external" {
 
   project = var.project_id
 }
+
+data "google_compute_address" "internal" {
+  count      = !var.external ? 1 : 0
+  depends_on = [google_compute_address.internal]
+
+  name = var.static_ip.name
+
+  project = var.project_id
+  region  = var.region
+}
+
+data "google_compute_global_address" "external" {
+  count      = var.external ? 1 : 0
+  depends_on = [google_compute_global_address.external]
+
+  name = var.static_ip.name
+
+  project = var.project_id
+}

@@ -106,6 +106,12 @@ variable "managed_certificates" {
   default = {}
 }
 
+variable "wait_for_load_balancer" {
+  description = "Wait for Load Balancer to be created successfully before returning"
+  type        = bool
+  default     = true
+}
+
 ##############################
 # Frontend Config
 ##############################

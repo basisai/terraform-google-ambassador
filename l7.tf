@@ -48,4 +48,6 @@ module "frontend" {
   ssl_policy          = var.ssl_policy
   ssl_policy_settings = var.ssl_policy_settings
   ssl_redirect        = var.ssl_redirect
+
+  wait_for_load_balancer = var.wait_for_load_balancer
 }

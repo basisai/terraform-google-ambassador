@@ -74,8 +74,7 @@ the individual modules.
 | <a name="input_env_raw"></a> [env\_raw](#input\_env\_raw) | Raw environment variables for container | `list(any)` | `[]` | no |
 | <a name="input_external_traffic_policy"></a> [external\_traffic\_policy](#input\_external\_traffic\_policy) | External traffic policy for L4 Load balancing | `string` | `"Local"` | no |
 | <a name="input_frontend_config"></a> [frontend\_config](#input\_frontend\_config) | Frontend Config CRD name | `string` | `""` | no |
-| <a name="input_health_check"></a> [health\_check](#input\_health\_check) | Health Check Configuration | <pre>object({<br>    interval            = optional(number)<br>    timeout             = optional(number)<br>    health_threshold    = optional(number)<br>    unhealthy_threshold = optional(number)<br>    protocol            = optional(string)<br>    path
-   = optional(string)<br>    port                = optional(number)<br>  })</pre> | <pre>{<br>  "interval": 10,<br>  "path": "/ambassador/v0/check_alive",<br>  "port": 8877,<br>  "protocol": "HTTP",<br>  "timeout": 10<br>}</pre> | no |
+| <a name="input_health_check"></a> [health\_check](#input\_health\_check) | Health Check Configuration | <pre>object({<br>    interval            = optional(number)<br>    timeout             = optional(number)<br>    health_threshold    = optional(number)<br>    unhealthy_threshold = optional(number)<br>    protocol            = optional(string)<br>    path                = optional(string)<br>    port                = optional(number)<br>  })</pre> | <pre>{<br>  "interval": 10,<br>  "path": "/ambassador/v0/check_alive",<br>  "port": 8877,<br>  "protocol": "HTTP",<br>  "timeout": 10<br>}</pre> | no |
 | <a name="input_hpa_enabled"></a> [hpa\_enabled](#input\_hpa\_enabled) | Enable HPA | `bool` | `true` | no |
 | <a name="input_hpa_max_replica"></a> [hpa\_max\_replica](#input\_hpa\_max\_replica) | Max Number of replica | `number` | `3` | no |
 | <a name="input_hpa_metrics"></a> [hpa\_metrics](#input\_hpa\_metrics) | Metrics for HPA Scaling | `any` | <pre>[<br>  {<br>    "resource": {<br>      "name": "cpu",<br>      "target": {<br>        "averageUtilization": 80,<br>        "type": "Utilization"<br>      }<br>    },<br>    "type": "Resource"<br>  },<br>  {<br>    "resource": {<br>      "name": "memory",<br>      "target": {<br>        "averageUtilization": 80,<br>        "type": "Utilization"<br>      }<br>    },<br>    "type": "Resource"<br>  }<br>]</pre> | no |
@@ -128,6 +127,7 @@ the individual modules.
 | <a name="input_tolerations"></a> [tolerations](#input\_tolerations) | Pod Tolerations | `list(any)` | `[]` | no |
 | <a name="input_volume_mounts"></a> [volume\_mounts](#input\_volume\_mounts) | Volunes mounts for container | `list(any)` | `[]` | no |
 | <a name="input_volumes"></a> [volumes](#input\_volumes) | Volunes for containers | `list(any)` | `[]` | no |
+| <a name="input_wait_for_load_balancer"></a> [wait\_for\_load\_balancer](#input\_wait\_for\_load\_balancer) | Wait for Load Balancer to be created successfully before returning | `bool` | `true` | no |
 
 ## Outputs
 
