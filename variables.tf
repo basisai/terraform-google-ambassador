@@ -365,6 +365,12 @@ variable "http2_enable" {
   default     = true
 }
 
+variable "wait_for_load_balancer" {
+  description = "Wait for Load Balancer to be created successfully before returning"
+  type        = bool
+  default     = true
+}
+
 ################################
 # CRD Configuration
 ################################

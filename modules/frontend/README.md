@@ -33,6 +33,8 @@ No modules.
 | [kubernetes-alpha_kubernetes_manifest.frontend_config](https://registry.terraform.io/providers/hashicorp/kubernetes-alpha/latest/docs/resources/kubernetes_manifest) | resource |
 | [kubernetes-alpha_kubernetes_manifest.managed_certificates](https://registry.terraform.io/providers/hashicorp/kubernetes-alpha/latest/docs/resources/kubernetes_manifest) | resource |
 | [kubernetes_ingress.ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress) | resource |
+| [google_compute_address.internal](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_address) | data source |
+| [google_compute_global_address.external](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_global_address) | data source |
 
 ## Inputs
 
@@ -56,6 +58,7 @@ No modules.
 | <a name="input_ssl_redirect"></a> [ssl\_redirect](#input\_ssl\_redirect) | Redirect HTTP to HTTPS | <pre>object({<br>    enabled            = bool<br>    response_code_name = optional(string) # One of `MOVED_PERMANENTLY_DEFAULT` `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`<br>  })</pre> | <pre>{<br>  "enabled": true,<br>  "response_code_name": "MOVED_PERMANENTLY_DEFAULT"<br>}</pre> | no |
 | <a name="input_static_ip"></a> [static\_ip](#input\_static\_ip) | Static IP configuration | <pre>object({<br>    name   = string # Name to create or use<br>    create = bool<br><br>    description = optional(string)<br><br>    # Internal address only<br>    subnetwork   = optional(string) # Required for internal<br>    network_tier = optional(string)<br>    address      = optional(string) # IPv4 Address for an internal IP<br>  })</pre> | <pre>{<br>  "create": true,<br>  "name": "ambassadaor"<br>}</pre> | no |
 | <a name="input_tls_secrets"></a> [tls\_secrets](#input\_tls\_secrets) | List of secrets to include in the ingress | <pre>list(object({<br>    hosts       = optional(list(string))<br>    secret_name = optional(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_wait_for_load_balancer"></a> [wait\_for\_load\_balancer](#input\_wait\_for\_load\_balancer) | Wait for Load Balancer to be created successfully before returning | `bool` | `true` | no |
 
 ## Outputs
 
