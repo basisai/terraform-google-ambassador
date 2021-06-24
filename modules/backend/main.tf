@@ -3,7 +3,7 @@ resource "kubernetes_manifest" "backend_config" {
   provider = kubernetes-alpha
 
   manifest = {
-    apiVersion = "cloud.google.com/v1beta1"
+    apiVersion = "cloud.google.com/v1"
     kind       = "BackendConfig"
 
     metadata = {
