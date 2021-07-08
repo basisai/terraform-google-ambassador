@@ -25,7 +25,7 @@ variable "chart_namespace" {
 variable "chart_version" {
   description = "Version of Chart to install. Set to empty to install the latest version"
   type        = string
-  default     = "6.6.3"
+  default     = "6.7.2"
 }
 
 variable "crds_enable" {
@@ -59,7 +59,7 @@ variable "image_repository" {
 variable "image_tag" {
   description = "Image tag for Ambassador image"
   type        = string
-  default     = "1.13.3"
+  default     = "1.13.9"
 }
 
 variable "replicas" {
@@ -173,14 +173,26 @@ variable "env_raw" {
   default     = []
 }
 
+variable "pod_security_context" {
+  description = "Pod securityContext"
+  type        = map(string)
+  default     = {}
+}
+
+variable "container_security_context" {
+  description = "Container securityContext"
+  type        = map(string)
+  default     = {}
+}
+
 variable "volumes" {
-  description = "Volunes for containers"
+  description = "Volumes for containers"
   type        = list(any)
   default     = []
 }
 
 variable "volume_mounts" {
-  description = "Volunes mounts for container"
+  description = "Volumes mounts for container"
   type        = list(any)
   default     = []
 }
