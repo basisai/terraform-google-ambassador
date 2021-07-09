@@ -63,6 +63,7 @@ the individual modules.
 | <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of Chart to install. Set to empty to install the latest version | `string` | `"6.6.3"` | no |
 | <a name="input_cloud_armor_policy"></a> [cloud\_armor\_policy](#input\_cloud\_armor\_policy) | Name of the Cloud Armor Policy to use | `string` | `""` | no |
 | <a name="input_connection_draining_timeout_sec"></a> [connection\_draining\_timeout\_sec](#input\_connection\_draining\_timeout\_sec) | connection draining timeout is the time, in seconds, to wait for connections to drain | `number` | `0` | no |
+| <a name="input_container_security_context"></a> [container\_security\_context](#input\_container\_security\_context) | Container securityContext | `map` | `{}` | no |
 | <a name="input_crds_create"></a> [crds\_create](#input\_crds\_create) | Create CRDs | `bool` | `true` | no |
 | <a name="input_crds_enable"></a> [crds\_enable](#input\_crds\_enable) | Enable CRDs | `bool` | `true` | no |
 | <a name="input_crds_keep"></a> [crds\_keep](#input\_crds\_keep) | Keep CRDs | `bool` | `true` | no |
@@ -96,6 +97,7 @@ the individual modules.
 | <a name="input_logging"></a> [logging](#input\_logging) | Logging configuration for the endpoint | <pre>object({<br>    enable      = bool<br>    sample_rate = number<br>  })</pre> | <pre>{<br>  "enable": false,<br>  "sample_rate": 0.5<br>}</pre> | no |
 | <a name="input_managed_certificates"></a> [managed\_certificates](#input\_managed\_certificates) | List of managed certificates to use or create. Key is the name | <pre>map(object({<br>    create  = optional(bool) # False by default<br>    domains = optional(list(string))<br>  }))</pre> | `{}` | no |
 | <a name="input_pod_disruption_budget"></a> [pod\_disruption\_budget](#input\_pod\_disruption\_budget) | PDB values | `any` | <pre>{<br>  "minAvailable": 1<br>}</pre> | no |
+| <a name="input_pod_security_context"></a> [pod\_security\_context](#input\_pod\_security\_context) | Pod securityContext | `map` | `{}` | no |
 | <a name="input_pre_shared_certificates"></a> [pre\_shared\_certificates](#input\_pre\_shared\_certificates) | List of pre-shared certificates to use. See https://cloud.google.com/load-balancing/docs/ssl-certificates/self-managed-certs | `list(string)` | `[]` | no |
 | <a name="input_priority_class_name"></a> [priority\_class\_name](#input\_priority\_class\_name) | Priority class names | `string` | `""` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Project ID for resources. Defaults to provider configured project | `string` | `null` | no |

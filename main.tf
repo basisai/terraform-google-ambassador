@@ -26,6 +26,9 @@ module "helm" {
   )
   env_raw = var.env_raw
 
+  pod_security_context       = var.pod_security_context
+  container_security_context = var.container_security_context
+
   volumes       = var.volumes
   volume_mounts = var.volume_mounts
 
