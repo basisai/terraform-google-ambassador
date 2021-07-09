@@ -175,13 +175,13 @@ variable "env_raw" {
 
 variable "pod_security_context" {
   description = "Pod securityContext"
-  type        = map(any)
+  type        = any
   default     = {}
 }
 
 variable "container_security_context" {
   description = "Container securityContext"
-  type        = map(any)
+  type        = any
   default     = {}
 }
 
