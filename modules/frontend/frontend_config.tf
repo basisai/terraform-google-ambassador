@@ -12,17 +12,17 @@ resource "google_compute_ssl_policy" "this" {
 }
 
 resource "kubernetes_manifest" "frontend_config" {
-  provider = kubernetes-alpha
-  count    = try(var.frontend_config.create, false) ? 1 : 0
+  count = try(var.frontend_config.create, false) ? 1 : 0
 
   manifest = {
     apiVersion = "networking.gke.io/v1beta1"
     kind       = "FrontendConfig"
 
     metadata = {
-      name      = var.frontend_config.name
-      namespace = var.kubernetes_namespace
-      labels    = var.kubernetes_labels
+      name        = var.frontend_config.name
+      namespace   = var.kubernetes_namespace
+      labels      = var.kubernetes_labels
+      annotations = var.kubernetes_annotations
     }
 
     spec = {

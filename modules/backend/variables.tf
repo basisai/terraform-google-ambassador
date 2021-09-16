@@ -15,6 +15,17 @@ variable "kubernetes_labels" {
   }
 }
 
+variable "kubernetes_annotations" {
+  description = "Annotations for Kubernetes Resources"
+  type        = map(string)
+  default = {
+    "app.kubernetes.io/instance"   = "ambassador"
+    "app.kubernetes.io/managed-by" = "Terraform"
+    "app.kubernetes.io/name"       = "ambassador"
+    "app.kubernetes.io/part-of"    = "ambassador"
+  }
+}
+
 variable "backend_config" {
   description = "Name for the BackendConfig CRD"
   type        = string

@@ -3,9 +3,10 @@ module "backend_config" {
 
   source = "./modules/backend"
 
-  backend_config       = coalesce(var.backend_config, var.release_name)
-  kubernetes_namespace = var.chart_namespace
-  kubernetes_labels    = var.kubernetes_labels
+  backend_config         = coalesce(var.backend_config, var.release_name)
+  kubernetes_namespace   = var.chart_namespace
+  kubernetes_labels      = var.kubernetes_labels
+  kubernetes_annotations = var.kubernetes_annotations
 
   timeout_sec                     = var.timeout_sec
   cdn                             = var.cdn
@@ -23,10 +24,11 @@ module "frontend" {
 
   source = "./modules/frontend"
 
-  project_id           = var.project_id
-  region               = var.region
-  kubernetes_namespace = var.chart_namespace
-  kubernetes_labels    = var.kubernetes_labels
+  project_id             = var.project_id
+  region                 = var.region
+  kubernetes_namespace   = var.chart_namespace
+  kubernetes_labels      = var.kubernetes_labels
+  kubernetes_annotations = var.kubernetes_annotations
 
   ingress_name        = coalesce(var.ingress_name, var.release_name)
   ingress_annotations = var.ingress_annotations

@@ -1,5 +1,4 @@
 resource "kubernetes_manifest" "managed_certificates" {
-  provider = kubernetes-alpha
   for_each = { for k, v in var.managed_certificates : k => v if coalesce(v.create, false) }
 
   manifest = {

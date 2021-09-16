@@ -27,6 +27,17 @@ variable "kubernetes_labels" {
   }
 }
 
+variable "kubernetes_annotations" {
+  description = "Annotations for Kubernetes Resources"
+  type        = map(string)
+  default = {
+    "app.kubernetes.io/instance"   = "ambassador"
+    "app.kubernetes.io/managed-by" = "Terraform"
+    "app.kubernetes.io/name"       = "ambassador"
+    "app.kubernetes.io/part-of"    = "ambassador"
+  }
+}
+
 variable "ingress_name" {
   description = "Name of the Kubernetes Ingress"
   type        = string
