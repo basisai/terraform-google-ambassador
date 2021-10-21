@@ -23,7 +23,6 @@ the individual modules.
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.5 |
-| <a name="requirement_kubernetes-alpha"></a> [kubernetes-alpha](#requirement\_kubernetes-alpha) | >= 0.2 |
 
 ## Providers
 
