@@ -1,15 +1,14 @@
 # See https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-features#configuring_ingress_features_through_backendconfig_parameters
 resource "kubernetes_manifest" "backend_config" {
-  provider = kubernetes-alpha
-
   manifest = {
     apiVersion = "cloud.google.com/v1"
     kind       = "BackendConfig"
 
     metadata = {
-      name      = var.backend_config
-      namespace = var.kubernetes_namespace
-      labels    = var.kubernetes_labels
+      name        = var.backend_config
+      namespace   = var.kubernetes_namespace
+      labels      = var.kubernetes_labels
+      annotations = var.kubernetes_annotations
     }
 
     spec = {

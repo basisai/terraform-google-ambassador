@@ -6,18 +6,16 @@ This module creates the ingress and (optionally) manages the `FrontendConfig` CR
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.1 |
-| <a name="requirement_kubernetes-alpha"></a> [kubernetes-alpha](#requirement\_kubernetes-alpha) | >= 0.2 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_google"></a> [google](#provider\_google) | >= 3.0 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.1 |
-| <a name="provider_kubernetes-alpha"></a> [kubernetes-alpha](#provider\_kubernetes-alpha) | >= 0.2 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.4.0 |
 
 ## Modules
 
@@ -30,9 +28,9 @@ No modules.
 | [google_compute_address.internal](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_address) | resource |
 | [google_compute_global_address.external](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
 | [google_compute_ssl_policy.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_ssl_policy) | resource |
-| [kubernetes-alpha_kubernetes_manifest.frontend_config](https://registry.terraform.io/providers/hashicorp/kubernetes-alpha/latest/docs/resources/kubernetes_manifest) | resource |
-| [kubernetes-alpha_kubernetes_manifest.managed_certificates](https://registry.terraform.io/providers/hashicorp/kubernetes-alpha/latest/docs/resources/kubernetes_manifest) | resource |
 | [kubernetes_ingress.ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress) | resource |
+| [kubernetes_manifest.frontend_config](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.managed_certificates](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [google_compute_address.internal](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_address) | data source |
 | [google_compute_global_address.external](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_global_address) | data source |
 
@@ -45,6 +43,7 @@ No modules.
 | <a name="input_frontend_config"></a> [frontend\_config](#input\_frontend\_config) | Frontend Config CRD. Set to `null` to not use this at all | <pre>object({<br>    name   = string<br>    create = bool<br>  })</pre> | <pre>{<br>  "create": true,<br>  "name": "ambassador"<br>}</pre> | no |
 | <a name="input_ingress_annotations"></a> [ingress\_annotations](#input\_ingress\_annotations) | Additional annotations for the ingress | `map(string)` | `{}` | no |
 | <a name="input_ingress_name"></a> [ingress\_name](#input\_ingress\_name) | Name of the Kubernetes Ingress | `string` | `"ambassador"` | no |
+| <a name="input_kubernetes_annotations"></a> [kubernetes\_annotations](#input\_kubernetes\_annotations) | Annotations for Kubernetes Resources | `map(string)` | <pre>{<br>  "app.kubernetes.io/instance": "ambassador",<br>  "app.kubernetes.io/managed-by": "Terraform",<br>  "app.kubernetes.io/name": "ambassador",<br>  "app.kubernetes.io/part-of": "ambassador"<br>}</pre> | no |
 | <a name="input_kubernetes_labels"></a> [kubernetes\_labels](#input\_kubernetes\_labels) | Labels for the Kubernetes Resources | `map(string)` | <pre>{<br>  "app.kubernetes.io/instance": "ambassador",<br>  "app.kubernetes.io/managed-by": "Terraform",<br>  "app.kubernetes.io/name": "ambassador",<br>  "app.kubernetes.io/part-of": "ambassador"<br>}</pre> | no |
 | <a name="input_kubernetes_namespace"></a> [kubernetes\_namespace](#input\_kubernetes\_namespace) | Namespace for the Kubernetes Resources | `string` | `"ambassador"` | no |
 | <a name="input_managed_certificates"></a> [managed\_certificates](#input\_managed\_certificates) | List of managed certificates to use or create. Key is the name | <pre>map(object({<br>    create  = optional(bool) # False by default<br>    domains = optional(list(string))<br>  }))</pre> | `{}` | no |

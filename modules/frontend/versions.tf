@@ -6,14 +6,10 @@ terraform {
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.1"
-    }
-    kubernetes-alpha = {
-      source  = "hashicorp/kubernetes-alpha"
-      version = ">= 0.2"
+      version = ">= 2.4.0"
     }
   }
-  required_version = ">= 0.14"
+  required_version = ">= 0.15"
 
   experiments = [module_variable_optional_attrs]
 }
