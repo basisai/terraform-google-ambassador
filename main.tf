@@ -1,6 +1,6 @@
 module "helm" {
   source  = "basisai/ambassador/helm"
-  version = "~> 1.0.0-alpha1"
+  version = "1.0.0-alpha1"
 
   release_name    = var.release_name
   chart_namespace = var.chart_namespace

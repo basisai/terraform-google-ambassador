@@ -36,7 +36,7 @@ the individual modules.
 |------|--------|---------|
 | <a name="module_backend_config"></a> [backend\_config](#module\_backend\_config) | ./modules/backend | n/a |
 | <a name="module_frontend"></a> [frontend](#module\_frontend) | ./modules/frontend | n/a |
-| <a name="module_helm"></a> [helm](#module\_helm) | basisai/ambassador/helm | ~> 1.0.0-alpha1 |
+| <a name="module_helm"></a> [helm](#module\_helm) | basisai/ambassador/helm | 1.0.0-alpha1 |
 
 ## Resources
 
