@@ -1,14 +1,13 @@
 module "helm" {
   source  = "basisai/ambassador/helm"
-  version = "~> 0.1.0, >= 0.1.1"
+  version = "1.0.0-alpha1"
 
   release_name    = var.release_name
   chart_namespace = var.chart_namespace
   chart_version   = var.chart_version
 
-  crds_enable = var.crds_enable
-  crds_create = var.crds_create
-  crds_keep   = var.crds_keep
+  manage_crd   = var.manage_crd
+  crd_manifest = var.crd_manifest
 
   image_repository = var.image_repository
   image_tag        = var.image_tag
@@ -32,7 +31,9 @@ module "helm" {
   volumes       = var.volumes
   volume_mounts = var.volume_mounts
 
-  service_type = var.enable_l7_load_balancing ? "NodePort" : "LoadBalancer"
+  create_default_listeners = var.create_default_listeners
+
+  service_type = var.enable_l7_load_balancing ? "ClusterIP" : "LoadBalancer"
   # See https://cloud.google.com/kubernetes-engine/docs/how-to/load-balance-ingress#service_annotations_related_to_ingress
   service_annotations = merge(
     var.service_annotations,
@@ -69,7 +70,7 @@ module "helm" {
 
   load_balancer_ip            = !var.enable_l7_load_balancing ? data.google_compute_address.l4[0].address : ""
   load_balancer_source_ranges = !var.enable_l7_load_balancing ? var.load_balancer_source_ranges : []
-  external_traffic_policy     = var.external_traffic_policy
+  external_traffic_policy     = !var.enable_l7_load_balancing ? var.external_traffic_policy : ""
 
   admin_service_annotations = var.admin_service_annotations
 
@@ -105,27 +106,4 @@ module "helm" {
       ]
     }
   }, var.affinity)
-
-  ##########################################
-  # Ambassador Edge Stack Configuration
-  ##########################################
-  enable_aes                     = var.enable_aes
-  license_key                    = var.license_key
-  license_key_create_secret      = var.license_key_create_secret
-  license_key_secret_name        = var.license_key_secret_name
-  license_key_secret_annotations = var.license_key_secret_annotations
-  create_dev_portal_mappings     = var.create_dev_portal_mappings
-  redis_url                      = var.redis_url
-  redis_create                   = var.redis_create
-  redis_image                    = var.redis_image
-  redis_tag                      = var.redis_tag
-  redis_deployment_annotations   = var.redis_deployment_annotations
-  redis_service_annotations      = var.redis_service_annotations
-  redis_resources                = var.redis_resources
-  redis_affinity                 = var.redis_affinity
-  redis_tolerations              = var.redis_tolerations
-  auth_service_create            = var.auth_service_create
-  auth_service_config            = var.auth_service_config
-  rate_limit_create              = var.rate_limit_create
-  registry_create                = var.registry_create
 }
